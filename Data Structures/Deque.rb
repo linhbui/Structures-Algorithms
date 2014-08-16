@@ -15,7 +15,7 @@ class Node
     end
 end
 
-class deque
+class Deque
 
     attr_accessor :head, :tail
 
