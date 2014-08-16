@@ -28,14 +28,14 @@ class BST
   
   def add_recursive data, node #<= to the left, > to the right
     if node.data >= data
-      if node.left.nil?
-        node.set_left Node.new(data)
+      if node.left.nil?     
+        node.set_left Node.new data 
       else
         add_recursive data, node.left
       end
     else
       if node.right.nil? 
-        node.set_right Node.new(data)
+        node.set_right Node.new data
       else 
         add_recursive data, node.right
       end
@@ -45,7 +45,7 @@ class BST
       
   def add data
     if @root.nil? 
-      @root = Node.new(data)
+      @root = Node.new data
     else
       add_recursive data, root
     end
