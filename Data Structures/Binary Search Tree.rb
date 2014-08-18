@@ -26,6 +26,14 @@ class BST
     @root = nil
   end
   
+  def add data
+    if @root.nil? 
+      @root = Node.new data
+    else
+      add_recursive data, root
+    end
+  end
+  
   def add_recursive data, node #<= to the left, > to the right
     if node.data >= data
       if node.left.nil?     
@@ -42,15 +50,14 @@ class BST
     end
   
   end
-      
-  def add data
-    if @root.nil? 
-      @root = Node.new data
+    
+  def search data
+    if root.nil?
+      return false
     else
-      add_recursive data, root
+      search_recursive data, root
     end
-  
-  end
+  end  
   
   def search_recursive data, node
     if node.data == data
@@ -69,14 +76,48 @@ class BST
       end
     end
   end 
-    
-  def search data
-    if root.nil?
-      return false
-    else
-      search_recursive data, root
+  
+  def in_order_traversal # print small numbers first, print root, then big number, everything has be in order.
+    traversal_recursive root
+  end
+  
+  def in_order_traversal_recursive node
+    if node.nil?
+      return # to parent
     end
-  end  
+    traversal_recursive node.left
+    puts node.data
+    traversal_recursive node.right 
+    return # to parent
+  end
+  
+  def pre_order_traversal # print the root first, print left, then print right. Recursive.
+    in_order_traversal_recursive root
+  end
+  
+  def pre_order_traversal_recursive node
+    if node.nil?
+      return 
+    end
+    puts node.data
+    traversal_recursive node.left
+    traversal_recursive node.right 
+    return 
+  end
+  
+  def post_order_traversal # print the left, print the right, then the root
+
+  end
+  
+  def post_order_traversal_recursive node     
+    if node.nil?
+      return 
+    end
+    traversal_recursive node.left
+    traversal_recursive node.right
+    puts node.data 
+    return 
+  end
   
 end
 
