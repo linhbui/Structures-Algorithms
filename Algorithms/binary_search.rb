@@ -1,6 +1,6 @@
 a = [1,2,3,4,4,6,7,8,9]
 
-def binary_search(arr,x)
+def binary_search arr,x
     return nil if x > arr[-1] || x < arr[0]
     start_point = 0
     end_point = arr.count - 1
@@ -17,4 +17,4 @@ def binary_search(arr,x)
     return nil
 end
 
-puts binary_search(a,5)
+puts binary_search a, 5
