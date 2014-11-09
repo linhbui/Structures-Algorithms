@@ -5,10 +5,6 @@ class Node
         @value = value # = self.value in Python
         @next = nil
     end
-
-    def value
-        @value
-    end
 end
 
 class SinglyLinkedList
