@@ -22,9 +22,8 @@ class SinglyLinkedList
         @head = Node.new value
       else
         current_node = @head
-        while current_node.next       # go to the next node until the next node is empty, i.e. the end of the list
-          current_node = current_node.next 
-        end
+        # go to the next node until the next node is empty, i.e. the end of the list
+        current_node = current_node.next while current_node.next
         current_node.next = Node.new value
       end
     end
@@ -41,7 +40,7 @@ class SinglyLinkedList
 
     def find value 
       current_node = @head
-      while !current_node.nil?
+      until current_node.nil?
         return current_node if current_node.value == value #accessing "val" variable under "someClass" : someClass.val
         current_node = current_node.next
       end
@@ -58,14 +57,14 @@ class SinglyLinkedList
     def pop_end
       return nil if @head.nil?
       
-      if @head.next = nil
+      if @head.next.nil?
         val = @head.value
         @head = nil
         return val
       end
       
       current_node = @head
-      while !current_node.next.next.nil?
+      until current_node.next.next.nil?
         current_node = current_node.next
       end
       val = current_node.next.value
